@@ -170,11 +170,14 @@ void ed_fm_simulate(double dt)
 		Helicopter::pitchRate_RPS, Helicopter::rollRate_RPS, Helicopter::yawRate_RPS,
 		Helicopter::CollectiveControl, Helicopter::PitchControl, Helicopter::RollControl, Helicopter::PedalControl, Helicopter::Motion.airspeed_KTS, Helicopter::Engine.getCoreRelatedRPM(), Helicopter::Airframe.rotorIntegrityFactor, Helicopter::Airframe.tailRotorIntegrityFactor);
 
-	// set for ground effect simulation, rotor diameter is 8.33m
+	// set for ground effect simulation
+	// ground effect will be produced when rotor's height is about to be lower than rotor's diameter, which is 8.33m
+	// altitudeAGL is the height of helicopter's body center, while ground effect shuold be calculated based on the height of the rotor
+	// while landing on ground, altitudeAGL constantly returns a value of 1.702049m, however, rotor's height should be 2.7m, so we need to add 1m to that value
+	// as we are using an exponential dropoff, any small error would make a big difference
 	if (Helicopter::Motion.altitudeAGL <= 8.33)
 	{
-		// using linear dropoff (but a graph i saw showed that it should be exponential)
-		Helicopter::Aero.setGroundEffectFactor(1 - Helicopter::Motion.altitudeAGL / 8.33);
+		Helicopter::Aero.setGroundEffectFactor(pow(0.63, (Helicopter::Motion.altitudeAGL + 1.0)) * 0.6); // 0.6 is a constant factor for the final lifting amplifier
 	}
 	else
 	{

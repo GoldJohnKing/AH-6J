@@ -693,10 +693,10 @@ namespace Helicopter
 		double getCnTotal() const { return Cn_total; }
 		double getClTotal() const { return Cl_total; }
 
-		// basic hackish ground effect. simply increases overall lift force by up to 30%
+		// ground effect
 		void setGroundEffectFactor(const double factor)
 		{
-			groundEffectFactor = 1 + factor * 0.3;
+			groundEffectFactor = 1 + factor;
 		}
 
 	}; // class AH6Aero
