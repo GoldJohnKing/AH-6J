@@ -682,7 +682,7 @@ namespace Helicopter
 			Cl_total = Lu * airspeedx + Lw * airspeedz + Lq * pitchRate + Lv * airspeedy + Lp * rollRate + Lr * yawRate + (rotorIntegrity * (Ldc * CollectiveInput + Ldb * PitchInput + Lda * RollInput) + Ldp * PedalInput * tailRotorIntegrity) * rpm;
 			
 			/*  Cn_tot		 yaw moment */ 
-			Cn_total = Nu * airspeedx + Nw * airspeedz + Nq * pitchRate + Nv * airspeedy + Np * rollRate + Nr * yawRate + (rotorIntegrity * (Ndc * CollectiveInput + Ndb * PitchInput + Nda * RollInput) + Ndp * PedalInput * tailRotorIntegrity) * rpm;
+			Cn_total = Nq * pitchRate + Np * rollRate + Nr * yawRate + Nv * airspeedy + (Ndp * PedalInput * tailRotorIntegrity) * rpm;
 
 		}
 
