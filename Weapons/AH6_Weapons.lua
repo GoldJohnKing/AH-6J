@@ -114,7 +114,7 @@ function M134(tbl)
     end
     tbl.gun =
     {
-        max_burst_length    = 6, -- minimum number of rounds fired per burst
+        max_burst_length    = 36, -- minimum number of rounds fired per burst
         rates               = {4000},
         recoil_coeff        = 0.07*1.3,
         barrels_count       = 6,
@@ -137,7 +137,7 @@ function M134(tbl)
         tbl.effects = {{ name = "FireEffect"     , arg = tbl.effect_arg_number or 436 },
                        { name = "HeatEffectExt"  , shot_heat = 7.823, barrel_k = 0.462 * 16.0},
                        { name = "SmokeEffect"},
-					   { name = "GatlingEffect", arg = 800, barrels_n = 6, spin_up_t = 1, spin_down_t = 0.01}
+					   { name = "GatlingEffect", arg = 800, barrels_n = 6, spin_up_t = 1, spin_down_t = 0.0}
 					   }
     end
     return declare_weapon(tbl)
@@ -181,7 +181,7 @@ function AH6_GAU19(tbl)
 	end
 	tbl.gun = 
 	{
-		max_burst_length = 3,
+		max_burst_length = 9,
 		rates 			 = {1300},
 		recoil_coeff 	 = 0.25*1.3,
 		barrels_count 	 = 3,
@@ -204,7 +204,7 @@ function AH6_GAU19(tbl)
 		tbl.effects = {{ name = "FireEffect"     , arg 		 = tbl.effect_arg_number or 436 },
 					   { name = "HeatEffectExt"  , shot_heat = 7.823, barrel_k = 0.462 * 2.7, body_k = 0.462 * 14.3 },
 					   { name = "SmokeEffect"},
-					   { name = "GatlingEffect", arg = 44, barrels_n = 3, spin_up_t = 0.4, spin_down_t = 0.1}
+					   { name = "GatlingEffect", arg = 44, barrels_n = 3, spin_up_t = 0.4, spin_down_t = 0.0}
 					   }
 	end
 	return declare_weapon(tbl)
