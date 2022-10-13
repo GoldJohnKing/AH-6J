@@ -1,0 +1,4 @@
+﻿/bin/*
+!/bin/AH6.dll
+/EFM Source Code/.vs
+/EFM Source Code/FlightModel/x64
